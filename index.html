@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upcoming Movie: Pushpa 2</title>
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #1e1e2f, #282841);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Title Styling */
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 8px #f15bb5, 0 0 12px #fee440;
+      animation: neon-glow 3s infinite alternate;
+    }
+
+    /* Movie Card Styling */
+    .movie-card {
+      width: 90%;
+      max-width: 400px;
+      background: rgba(40, 40, 65, 0.9);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.8), 0 0 15px #fee440 inset;
+      animation: fadeInUp 1.5s ease-out;
+    }
+
+    .movie-card img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 10px;
+      margin: 0 auto;
+      display: block;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+      animation: pulse 3s infinite;
+    }
+
+    .movie-card p {
+      font-size: 1rem;
+      margin: 15px 0;
+      text-shadow: 0 0 5px #f15bb5;
+      animation: text-fade-in 2s ease-in-out;
+    }
+
+    .movie-card .countdown-container {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      background: linear-gradient(to right, #f15bb5, #fee440);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: color-glow 1.5s infinite alternate;
+    }
+
+    /* Keyframe Animations */
+    @keyframes neon-glow {
+      from {
+        text-shadow: 0 0 10px #f15bb5, 0 0 20px #fee440, 0 0 30px #f15bb5;
+      }
+      to {
+        text-shadow: 0 0 20px #f15bb5, 0 0 30px #fee440, 0 0 40px #f15bb5;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    @keyframes text-fade-in {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes color-glow {
+      from {
+        text-shadow: 0 0 5px #f15bb5, 0 0 10px #fee440;
+      }
+      to {
+        text-shadow: 0 0 10px #f15bb5, 0 0 15px #fee440;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1> 🎬 PUSHPA 2</h1>
+    <div class="movie-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrkOaiJoMpkxy3TO7w6HC_BHQQDvy7r_n5mGvfrREl8WW5CGukZG3SSBA&s=10" alt="Pushpa 2 Cover">
+      <p>Release Date: <strong>5th December 2024</strong></p>
+      <div class="countdown-container" id="countdown">Calculating time...</div>
+    </div>
+  </div>
+
+  <script>
+    // Countdown timer
+    function updateCountdown() {
+      const releaseDate = new Date("2024-12-05T00:00:00");
+      const now = new Date();
+      const timeDiff = releaseDate - now;
+
+      if (timeDiff <= 0) {
+        document.getElementById("countdown").textContent = "Released!";
+        return;
+      }
+
+      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").textContent =
+        `${days} Days, ${hours} Hours, ${minutes} Minutes, ${seconds} Seconds left`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
